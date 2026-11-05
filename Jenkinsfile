@@ -23,4 +23,11 @@ pipeline {
     stage('Dependency scan') { steps { script { cveScan.scan() } } }
     stage('CVE evaluate')    { steps { script { cveScan.evaluate(projectName: 'demo-spring', threshold: 7.0) } } }
   }
+    post {
+    failure {
+      mail to: 'imanemassa2005@gmail.comN',
+           subject: "CVE détectées : ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+           body: "Le build a échoué.\n${currentBuild.description ?: ''}\nDétails : ${env.BUILD_URL}"
+    }
+  }
 }
