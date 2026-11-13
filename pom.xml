@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Spring Boot 2.5.0 (mai 2021) : Spring Framework 5.3.7 et Tomcat 9.0.46, tous deux vulnerables -->
+  <!-- Version corrigee : Spring Boot 3.5.16 (branche safe) -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.5.7</version>
+    <version>3.5.16</version>
     <relativePath/>
   </parent>
 
@@ -16,10 +16,10 @@
   <artifactId>spring-vulnerable-lab</artifactId>
   <version>1.0.0</version>
   <name>spring-vulnerable-lab</name>
-  <description>Petit service Spring avec des dependances volontairement anciennes (lab DevSecOps)</description>
+  <description>Petit service Spring avec des dependances a jour (lab DevSecOps, branche safe)</description>
 
   <properties>
-    <java.version>11</java.version>
+    <java.version>21</java.version>
   </properties>
 
   <dependencies>
@@ -28,11 +28,10 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <!-- Dependances anciennes declarees explicitement (detectees par les scanners) -->
+    <!-- Versions gerees par Spring Boot (plus de version codee en dur pour log4j-core) -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.25.2</version>
     </dependency>
     <dependency>
       <groupId>commons-collections</groupId>
